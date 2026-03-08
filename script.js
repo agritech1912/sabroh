@@ -15,20 +15,42 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ────────────────────────────────────────────────
-       0.  PAGE DATA (labels)
+       0.  STORY CONFIG (Change Name Here)
+    ──────────────────────────────────────────────── */
+    const STORY_CONFIG = {
+        name: 'Sabrina', // Set to 'Afsana', 'Sabrina', etc. 
+        typingMessage: 'এই পাতার প্রতিটি শব্দ একেকটি হৃদস্পন্দন, যা শুধু তোমারই জন্য, {name}।'
+    };
+
+    /* ────────────────────────────────────────────────
+       0.1 PAGE DATA (labels)
     ──────────────────────────────────────────────── */
     const PAGE_LABELS = [
-        'Our Prelude',
-        'Chapter I — First Sight',
-        'Chapter II — The Encounter',
-        'Chapter III — Your Voice',
-        'Chapter IV — Midnight',
-        'Chapter V — The Longing',
-        'Chapter VI — You Returned',
-        'Chapter VII — The Pull Of You',
-        'Chapter VIII — What I Want With You',
-        '✦ Only For You ✦'
+        'আমাদের শুরু',
+        '১ম দেখা',
+        'অনুসন্ধান',
+        'জমানো সময়',
+        'তীব্র আসক্তি',
+        'নির্ঘুম রাত',
+        'রূপের অন্বেষণ',
+        'পরম সুখ',
+        'একটি দিন',
+        'শেষ বাসনা'
     ];
+
+    /* ────────────────────────────────────────────────
+       0.5  DYNAMIC NAME INJECTION
+    ──────────────────────────────────────────────── */
+    function injectDynamicName() {
+        const nameElements = document.querySelectorAll('.dynamic-name');
+        nameElements.forEach(el => {
+            el.textContent = STORY_CONFIG.name;
+        });
+
+        // Also update title if needed
+        document.title = `Cinematic Love Story — ${STORY_CONFIG.name}`;
+    }
+
 
     /* ────────────────────────────────────────────────
        1.  FLOATING HEART PARTICLES  (canvas)
@@ -233,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ];
 
                 fpImages.forEach((img, idx) => {
-                    // Use a formula to pick a different image for each spot (idx) 
+                    // Use a formula to pick a different image for each spot (idx)
                     // that changes based on page (currentIndex)
                     const imgIdx = (currentIndex + idx) % allRealImages.length;
                     img.src = allRealImages[imgIdx];
@@ -576,7 +598,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ────────────────────────────────────────────────
        6.  TYPING EFFECT ON COVER
     ──────────────────────────────────────────────── */
-    const TYPED_TEXT = 'Every word on these pages is a heartbeat that belongs to you, Sabrina.';
+    const TYPED_TEXT = STORY_CONFIG.typingMessage.replace('{name}', STORY_CONFIG.name);
+
     function startTypingEffect() {
         const el = document.getElementById('typedSub');
         if (!el) return;
@@ -592,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
        7.  PORTRAIT CLICK RIPPLE
     ──────────────────────────────────────────────── */
     function initPortraitRipple() {
-        document.querySelectorAll('.portrait-card, .cover-portrait-img, .finale-sabrina-img').forEach(card => {
+        document.querySelectorAll('.portrait-card, .cover-portrait-img, .finale-afsana-img').forEach(card => {
             card.addEventListener('click', function (e) {
                 sfx.heartBurst();
                 spawnBurstHearts(e.clientX, e.clientY, 10);
@@ -675,6 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ────────────────────────────────────────────────
        8.  INIT
     ──────────────────────────────────────────────── */
+    injectDynamicName(); // Inject name immediately
     syncUI();
 
 }); // end DOMContentLoaded
