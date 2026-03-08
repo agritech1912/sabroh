@@ -217,10 +217,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // progress bar
         updateProgress();
 
-        // floating portraits: show when off cover
+        // floating portraits: show when off cover + update images chapter by chapter
         if (floatingPortraits) {
             if (currentIndex > 0) {
                 floatingPortraits.classList.add('visible');
+
+                // Update images dynamically chapter by chapter
+                const fpImages = floatingPortraits.querySelectorAll('img');
+                const allRealImages = [
+                    'real_sabrina_1.jpg',
+                    'real_sabrina_2.jpg',
+                    'real_sabrina_3.jpg',
+                    'real_sabrina_4.jpg',
+                    'real_sabrina_5.jpg'
+                ];
+
+                fpImages.forEach((img, idx) => {
+                    // Use a formula to pick a different image for each spot (idx) 
+                    // that changes based on page (currentIndex)
+                    const imgIdx = (currentIndex + idx) % allRealImages.length;
+                    img.src = allRealImages[imgIdx];
+                });
+
             } else {
                 floatingPortraits.classList.remove('visible');
             }
