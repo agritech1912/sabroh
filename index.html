@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabrina — My Heart's Story 💕</title>
+    <meta name="description" content="A cinematic love letter to Sabrina Khan, crafted with every heartbeat.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ── READING PROGRESS BAR ── -->
+    <div class="reading-progress" id="readingProgress">
+        <div class="reading-progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- ── AMBIENT PARTICLES ── -->
+    <canvas id="heartCanvas"></canvas>
+
+    <!-- ── GLOW ORBS ── -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- ── PRELOADER ── -->
+    <div id="preloader">
+        <div class="pl-inner">
+            <div class="pl-portrait">
+                <img src="real_sabrina_1.jpg" alt="Sabrina" class="pl-img">
+                <div class="pl-ring"></div>
+            </div>
+            <div class="pl-heart">
+                <i class="bi bi-heart-fill"></i>
+            </div>
+            <div class="pl-line"></div>
+            <p class="pl-text">Opening our story, Sabrina…</p>
+        </div>
+    </div>
+
+    <!-- ── AUDIO BUTTON ── -->
+    <div class="floating-audio">
+        <button id="audioToggle" class="audio-btn" title="Play Romantic Music">
+            <i class="bi bi-music-note-beamed" id="audioIcon"></i>
+            <span id="audioLabel">Play Music</span>
+        </button>
+    </div>
+
+    <!-- ── LOVE BADGE ── -->
+    <div class="love-badge">
+        <i class="bi bi-heart-fill"></i>
+        <span>Sabrina ✦ Always</span>
+    </div>
+
+    <!-- ── FLOATING SABRINA PORTRAITS (decorative layer, JS-animated) ── -->
+    <div class="floating-portraits" id="floatingPortraits" aria-hidden="true">
+        <div class="fp fp-1"><img src="real_sabrina_1.jpg" alt="Sabrina"></div>
+        <div class="fp fp-2"><img src="real_sabrina_2.jpg" alt="Sabrina"></div>
+        <div class="fp fp-3"><img src="real_sabrina_3.jpg" alt="Sabrina"></div>
+        <div class="fp fp-4"><img src="real_sabrina_4.jpg" alt="Sabrina"></div>
+    </div>
+
+    <!-- ── MAIN STORY STAGE ── -->
+    <main id="storyStage">
+
+        <!-- PAGE 0 – Cover -->
+        <section class="story-page active" data-index="0">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=85&w=2070&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay"></div>
+            <div class="page-content center-content">
+                <span class="eyebrow-tag">☽ For You, Only You ☾</span>
+                <h1 class="hero-title">
+                    You Are The<br>
+                    <em>Only Universe</em><br>
+                    That Matters
+                </h1>
+                <p class="hero-sub" id="typedSub"></p>
+                <div class="cover-portrait-frame">
+                    <img src="real_sabrina_1.jpg" alt="Sabrina" class="cover-portrait-img">
+                    <div class="cover-portrait-ring"></div>
+                    <div class="cover-name-tag">Sabrina Khan ✦ 27</div>
+                </div>
+                <div class="pulse-heart"><i class="bi bi-heart-fill"></i></div>
+                <button class="begin-btn" id="beginBtn">
+                    Begin Our Story
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 1 – First Sight -->
+        <section class="story-page" data-index="1">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=85&w=1974&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay"></div>
+            <div class="page-content split-content">
+                <div class="content-text">
+                    <span class="chapter-num">Chapter I</span>
+                    <h2 class="chapter-title">The Moment<br><em>The World Stopped</em></h2>
+                    <p class="story-para">
+                        The second you walked in, everything else blurred.<br>
+                        Not the room. Not the noise. Just <em>you</em> —<br>
+                        vivid, sharp, the only real thing left.
+                    </p>
+                    <div class="soul-quote">
+                        <i class="bi bi-quote"></i>
+                        "I didn't fall in love. I walked into it, eyes wide open."
+                    </div>
+                </div>
+                <div class="page-portrait-panel">
+                    <div class="portrait-card">
+                        <img src="real_sabrina_4.jpg" alt="Sabrina">
+                        <div class="portrait-caption">First Sight</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2 – The Encounter -->
+        <section class="story-page" data-index="2">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1541170569581-306fc6e02787?q=85&w=1974&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay warm-overlay"></div>
+            <div class="page-content split-content">
+                <div class="content-text">
+                    <span class="chapter-num">Chapter II</span>
+                    <h2 class="chapter-title">From Demra,<br><em>Into My Heart</em></h2>
+                    <p class="story-para">
+                        You rushed in from Demra, breathless.<br>
+                        Took the very last seat — as if the universe<br>
+                        had saved it, just to place you near me.
+                    </p>
+                    <div class="soul-quote">
+                        <i class="bi bi-quote"></i>
+                        "You sat at the last bench and filled every corner of my world."
+                    </div>
+                </div>
+                <div class="page-portrait-panel">
+                    <div class="portrait-card">
+                        <img src="real_sabrina_2.jpg" alt="Sabrina">
+                        <div class="portrait-caption">The Encounter</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3 – The Voice -->
+        <section class="story-page" data-index="3">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1507038732509-8b1a961e2229?q=85&w=1974&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay"></div>
+            <div class="page-content split-content">
+                <div class="content-text">
+                    <span class="chapter-num">Chapter III</span>
+                    <h2 class="chapter-title">Your Voice,<br><em>My Favourite Sound</em></h2>
+                    <p class="story-para">
+                        A simple question in class —<br>
+                        but your voice moved through the air like music<br>
+                        I'd been waiting my whole life to hear.
+                    </p>
+                    <div class="soul-quote">
+                        <i class="bi bi-quote"></i>
+                        "Your voice holds more warmth than the sun ever gave me."
+                    </div>
+                </div>
+                <div class="page-portrait-panel">
+                    <div class="portrait-card">
+                        <img src="real_sabrina_3.jpg" alt="Sabrina">
+                        <div class="portrait-caption">Your Voice</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4 – Midnight Messages -->
+        <section class="story-page" data-index="4">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=85&w=2070&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay deep-overlay"></div>
+            <div class="page-content split-content">
+                <div class="content-text light-text">
+                    <span class="chapter-num">Chapter IV</span>
+                    <h2 class="chapter-title">Midnight Words,<br><em>Infinite Feelings</em></h2>
+                    <p class="story-para">
+                        The world slept. You stayed.<br>
+                        A topic was the excuse — everything after<br>
+                        was raw, unguarded, <em>beautifully real.</em>
+                    </p>
+                    <div class="soul-quote light-quote">
+                        <i class="bi bi-quote"></i>
+                        "Every message you sent at midnight felt like a star being born."
+                    </div>
+                </div>
+                <div class="page-portrait-panel">
+                    <div class="portrait-card dark-card">
+                        <img src="real_sabrina_1.jpg" alt="Sabrina">
+                        <div class="portrait-caption">Midnight</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 5 – The Longing -->
+        <section class="story-page" data-index="5">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1509228468518-180dd4864904?q=85&w=2070&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay warm-overlay"></div>
+            <div class="page-content split-content">
+                <div class="content-text">
+                    <span class="chapter-num">Chapter V</span>
+                    <h2 class="chapter-title">Silence Taught<br><em>Me Your Value</em></h2>
+                    <p class="story-para">
+                        Even in the quietest seasons,<br>
+                        you were the ache I couldn't name —<br>
+                        the thought that arrived and refused to leave.
+                    </p>
+                    <div class="soul-quote">
+                        <i class="bi bi-quote"></i>
+                        "Even in silence, you were the loudest thing in my heart."
+                    </div>
+                </div>
+                <div class="page-portrait-panel">
+                    <div class="portrait-card">
+                        <img src="real_sabrina_4.jpg" alt="Sabrina">
+                        <div class="portrait-caption">The Longing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 6 – The Return -->
+        <section class="story-page" data-index="6">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1473186578172-c141e6798ee4?q=85&w=1973&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay"></div>
+            <div class="page-content split-content">
+                <div class="content-text">
+                    <span class="chapter-num">Chapter VI</span>
+                    <h2 class="chapter-title">You Came Back<br><em>& Healed Everything</em></h2>
+                    <p class="story-para">
+                        You returned like an answered prayer<br>
+                        I'd stopped expecting. You didn't just fill the space —<br>
+                        you <em>became</em> why it had always been there.
+                    </p>
+                    <div class="soul-quote">
+                        <i class="bi bi-quote"></i>
+                        "You are the answer to questions I didn't know I was asking."
+                    </div>
+                </div>
+                <div class="page-portrait-panel">
+                    <div class="portrait-card">
+                        <img src="real_sabrina_2.jpg" alt="Sabrina">
+                        <div class="portrait-caption">You Returned</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 7 – The Pull -->
+        <section class="story-page" data-index="7">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1520038410233-7141d7b9c4f1?q=85&w=2070&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay desire-overlay"></div>
+            <div class="page-content split-content">
+                <div class="content-text light-text">
+                    <span class="chapter-num desire-tag">Chapter VII</span>
+                    <h2 class="chapter-title desire-title">The Pull<br><em>Of You</em></h2>
+                    <p class="story-para">
+                        It lives deeper than my heart —<br>
+                        in the pulse of my veins, in every breath<br>
+                        that carries your name without sound.
+                    </p>
+                    <div class="soul-quote desire-quote">
+                        <i class="bi bi-quote"></i>
+                        "Every time I see you, I'm reminded — I was made to love you."
+                    </div>
+                </div>
+                <div class="page-portrait-panel">
+                    <div class="portrait-card desire-card">
+                        <img src="real_sabrina_3.jpg" alt="Sabrina">
+                        <div class="portrait-caption">The Pull</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 8 – What I Want -->
+        <section class="story-page" data-index="8">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=85&w=2069&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay crimson-overlay"></div>
+            <div class="page-content split-content">
+                <div class="content-text light-text">
+                    <span class="chapter-num desire-tag">Chapter VIII</span>
+                    <h2 class="chapter-title desire-title">What I Want<br><em>With You</em></h2>
+                    <p class="story-para">
+                        I want to hold your face and look at you<br>
+                        the way you deserve — like you are<br>
+                        the most breathtaking thing ever made.
+                    </p>
+                    <div class="soul-quote desire-quote">
+                        <i class="bi bi-quote"></i>
+                        "I want to love you in every way two people can — deeply, wildly."
+                    </div>
+                </div>
+                <div class="page-portrait-panel">
+                    <div class="portrait-card desire-card">
+                        <img src="real_sabrina_1.jpg" alt="Sabrina">
+                        <div class="portrait-caption">Everything</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 9 – The Intimate Finale -->
+        <section class="story-page finale-page desire-finale" data-index="9">
+            <div class="page-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=85&w=1974&auto=format&fit=crop')">
+            </div>
+            <div class="page-overlay midnight-finale-overlay"></div>
+            <div class="page-content center-content finale-content">
+                <div class="finale-sabrina-frame">
+                    <img src="real_sabrina_2.jpg" alt="Sabrina" class="finale-sabrina-img">
+                    <div class="finale-sabrina-ring"></div>
+                </div>
+                <div class="finale-hearts">
+                    <i class="bi bi-heart-fill fh fh-1"></i>
+                    <i class="bi bi-heart-fill fh fh-2"></i>
+                    <i class="bi bi-heart-fill fh fh-3"></i>
+                </div>
+                <span class="eyebrow-tag desire-eyebrow">✦ Only For You, Sabrina ✦</span>
+                <h2 class="finale-title desire-finale-title">Stay With Me<br><em>Tonight</em></h2>
+                <p class="finale-para desire-final-para">
+                    I <em>desire</em> you — not just your presence,<br>
+                    not just your voice —<br>
+                    <em>all of you.</em> Every breath, every heartbeat, forever.
+                </p>
+                <div class="desire-whisper">
+                    <span>You are my favourite secret.</span>
+                    <span>My most beautiful craving.</span>
+                    <span>The person I want — always.</span>
+                </div>
+                <div class="forever-badge desire-forever">
+                    <i class="bi bi-heart-fill"></i>
+                    I am yours, Sabrina. Every part of me.
+                    <i class="bi bi-heart-fill"></i>
+                </div>
+                <div class="finale-btns">
+                    <button class="replay-btn" id="replayBtn">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                        Read Again, My Love
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ── NAVIGATION ── -->
+    <nav class="story-nav" id="storyNav">
+        <button class="nav-arrow prev-arrow" id="prevBtn" disabled aria-label="Previous">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <div class="nav-dots" id="navDots"></div>
+        <button class="nav-arrow next-arrow" id="nextBtn" aria-label="Next">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+    </nav>
+
+    <!-- ── PAGE LABEL ── -->
+    <div class="page-label" id="pageLabel">Prelude</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
